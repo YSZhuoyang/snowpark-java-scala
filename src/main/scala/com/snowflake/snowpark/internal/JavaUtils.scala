@@ -309,7 +309,7 @@ object JavaUtils {
   def stringArrayToStringSeq(arr: Array[String]): Seq[String] = arr
 
   def objectListToAnySeq(input: java.util.List[java.util.List[Object]]): Seq[Seq[Any]] =
-    input.asScala.map(list => list.asScala)
+    input.asScala.map(list => list.asScala.toSeq).toSeq
 
   def registerUDF(
       udfRegistration: UDFRegistration,

@@ -2235,7 +2235,7 @@ class DataFrame private[snowpark] (
           }
       }
       lines.append(value.substring(startIndex))
-      lines
+      lines.toSeq
     }
 
     val body: Seq[Seq[String]] = result.flatMap(row => {
@@ -2354,7 +2354,7 @@ class DataFrame private[snowpark] (
    *                            and view name.
    */
   def createOrReplaceView(multipartIdentifier: java.util.List[String]): Unit =
-    createOrReplaceView(multipartIdentifier.asScala)
+    createOrReplaceView(multipartIdentifier.asScala.mkString("."))
 
   /**
    * Creates a temporary view that returns the same results as this DataFrame.
@@ -2417,7 +2417,7 @@ class DataFrame private[snowpark] (
    *                            view name.
    */
   def createOrReplaceTempView(multipartIdentifier: java.util.List[String]): Unit =
-    createOrReplaceTempView(multipartIdentifier.asScala)
+    createOrReplaceTempView(multipartIdentifier.asScala.mkString("."))
 
   private def doCreateOrReplaceView(viewName: String, viewType: ViewType): Unit = {
     session.conn.telemetry.reportActionCreateOrReplaceView()
