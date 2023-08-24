@@ -1757,7 +1757,7 @@ class DataFrame private[snowpark] (
    * @param firstArg The first argument to pass to the specified table function.
    * @param remaining A list of any additional arguments for the specified table function.
    */
-  def join(func: TableFunction, firstArg: Column, remaining: Column*): DataFrame =
+  def join(func: com.snowflake.snowpark.TableFunction, firstArg: Column, remaining: Column*): DataFrame =
     join(func, firstArg +: remaining)
 
   /**
@@ -1784,7 +1784,7 @@ class DataFrame private[snowpark] (
    *   object or an object that you create from the [[TableFunction]] class.
    * @param args A list of arguments to pass to the specified table function.
    */
-  def join(func: TableFunction, args: Seq[Column]): DataFrame = withPlan {
+  def join(func: com.snowflake.snowpark.TableFunction, args: Seq[Column]): DataFrame = withPlan {
     TableFunctionJoin(this.plan, func(args: _*), None)
   }
 
@@ -1815,7 +1815,7 @@ class DataFrame private[snowpark] (
    * @param orderBy A list of columns ordered by.
    */
   def join(
-      func: TableFunction,
+      func: com.snowflake.snowpark.TableFunction,
       args: Seq[Column],
       partitionBy: Seq[Column],
       orderBy: Seq[Column]): DataFrame = withPlan {
@@ -1855,7 +1855,7 @@ class DataFrame private[snowpark] (
    *              Some functions, like `flatten`, have named parameters.
    *              Use this map to specify the parameter names and their corresponding values.
    */
-  def join(func: TableFunction, args: Map[String, Column]): DataFrame = withPlan {
+  def join(func: com.snowflake.snowpark.TableFunction, args: Map[String, Column]): DataFrame = withPlan {
     TableFunctionJoin(this.plan, func(args), None)
   }
 
@@ -1893,7 +1893,7 @@ class DataFrame private[snowpark] (
    * @param orderBy A list of columns ordered by.
    */
   def join(
-      func: TableFunction,
+      func: com.snowflake.snowpark.TableFunction,
       args: Map[String, Column],
       partitionBy: Seq[Column],
       orderBy: Seq[Column]): DataFrame = withPlan {
