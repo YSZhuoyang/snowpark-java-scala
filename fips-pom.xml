@@ -34,16 +34,16 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <encoding>UTF-8</encoding>
-        <scala.version>2.12.11</scala.version>
-        <scala.compat.version>2.12</scala.compat.version>
-        <spec2.version>4.2.0</spec2.version>
+        <scala.version>2.13.10</scala.version>
+        <scala.compat.version>2.13</scala.compat.version>
+        <spec2.version>4.20.2</spec2.version>
         <snowflake.jdbc.version>3.13.32</snowflake.jdbc.version>
         <version.scala.binary>${scala.compat.version}</version.scala.binary>
         <doctitle>Snowpark ${project.version}</doctitle>
         <bouncycastle.version>1.64</bouncycastle.version>
-        <scalaPluginVersion>4.3.0</scalaPluginVersion>
+        <scalaPluginVersion>4.8.1</scalaPluginVersion>
         <jackson.version>2.13.2</jackson.version>
-        <jackson.databind.version>2.13.4.2</jackson.databind.version>
+        <jackson.databind.version>2.13.2</jackson.databind.version>
     </properties>
 
     <repositories>
@@ -154,7 +154,7 @@
         <dependency>
             <groupId>org.scalatest</groupId>
             <artifactId>scalatest_${scala.compat.version}</artifactId>
-            <version>3.0.5</version>
+            <version>3.2.16</version>
             <scope>test</scope>
         </dependency>
         <dependency>
