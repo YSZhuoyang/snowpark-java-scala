@@ -1757,7 +1757,10 @@ class DataFrame private[snowpark] (
    * @param firstArg The first argument to pass to the specified table function.
    * @param remaining A list of any additional arguments for the specified table function.
    */
-  def join(func: com.snowflake.snowpark.TableFunction, firstArg: Column, remaining: Column*): DataFrame =
+  def join(
+      func: com.snowflake.snowpark.TableFunction,
+      firstArg: Column,
+      remaining: Column*): DataFrame =
     join(func, firstArg +: remaining)
 
   /**
@@ -1855,9 +1858,10 @@ class DataFrame private[snowpark] (
    *              Some functions, like `flatten`, have named parameters.
    *              Use this map to specify the parameter names and their corresponding values.
    */
-  def join(func: com.snowflake.snowpark.TableFunction, args: Map[String, Column]): DataFrame = withPlan {
-    TableFunctionJoin(this.plan, func(args), None)
-  }
+  def join(func: com.snowflake.snowpark.TableFunction, args: Map[String, Column]): DataFrame =
+    withPlan {
+      TableFunctionJoin(this.plan, func(args), None)
+    }
 
   /**
    * Joins the current DataFrame with the output of the specified user-defined table function

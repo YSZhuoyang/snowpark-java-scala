@@ -356,7 +356,7 @@ object JavaUtils {
       case (key, value) => key -> value
     }.toMap
 
-  def scalaMapToJavaWithVariantConversion(map: Map[_, _]): java.util.Map[Object, Object] =
+  def scalaMapToJavaWithVariantConversion[K, V](map: Map[K, V]): java.util.Map[Object, Object] =
     map.map {
       case (key, value: com.snowflake.snowpark.types.Variant) =>
         key.asInstanceOf[Object] -> InternalUtils.createVariant(value)

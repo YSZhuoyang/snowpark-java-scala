@@ -495,7 +495,10 @@ class Session private (private[snowpark] val conn: ServerConnection) extends Log
    * @param firstArg the first function argument of the given table function.
    * @param remaining all remaining function arguments.
    */
-  def tableFunction(func: com.snowflake.snowpark.TableFunction, firstArg: Column, remaining: Column*): DataFrame =
+  def tableFunction(
+      func: com.snowflake.snowpark.TableFunction,
+      firstArg: Column,
+      remaining: Column*): DataFrame =
     tableFunction(func, firstArg +: remaining)
 
   /**
@@ -564,7 +567,9 @@ class Session private (private[snowpark] val conn: ServerConnection) extends Log
    *              Some functions, like flatten, have named parameters.
    *              use this map to assign values to the corresponding parameters.
    */
-  def tableFunction(func: com.snowflake.snowpark.TableFunction, args: Map[String, Column]): DataFrame = {
+  def tableFunction(
+      func: com.snowflake.snowpark.TableFunction,
+      args: Map[String, Column]): DataFrame = {
     // Use df.join to apply function result if args contains a DF column
     val sourceDFs = args.values.flatMap(_.expr.sourceDFs)
     if (sourceDFs.isEmpty) {
