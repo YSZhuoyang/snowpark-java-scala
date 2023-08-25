@@ -42,8 +42,8 @@
         <doctitle>Snowpark ${project.version}</doctitle>
         <bouncycastle.version>1.64</bouncycastle.version>
         <scalaPluginVersion>4.8.1</scalaPluginVersion>
-        <jackson.version>2.13.2</jackson.version>
-        <jackson.databind.version>2.13.2</jackson.databind.version>
+        <jackson.version>2.15.2</jackson.version>
+        <jackson.databind.version>2.15.2</jackson.databind.version>
     </properties>
 
     <repositories>
